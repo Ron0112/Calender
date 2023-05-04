@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    body {
+        background: radial-gradient(#550055, #000);
+        border: white;
+        border-style: solid;
+    }
+
+    h1 {
+        width: 100%;
+        font-size: 210px;
+        background: #000000;
+        text-align: center;
+        color: aliceblue;
+        font-family: 'Arial';
+    }
+
+    img {
+        width: 25%;
+        padding-left: 30px;
+        padding-right: 30px;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+</style>
+
+
+<body>
+    <center>
+        <h1 id="time"></h1>
+        <img src="1_idol.png"></img>
+        <img style="padding-bottom: 80px; width: 35%" src="" id="center-image"></img>
+        <img src="2_idol.png"></img>
+        <h1 id="count-down"></h1>
+    </center>
+</body>
+
+<script>
+    function currentTime() {
+        let date = new Date();
+        let hh = date.getHours();
+        let mm = date.getMinutes();
+        let ss = date.getSeconds();
+        let session = "AM";
+
+        if (hh == 0) { hh = 12 }
+        if (hh > 12) {
+            hh = hh - 12;
+            session = "PM";
+        }
+
+        hh = (hh < 10) ? "0" + hh : hh;
+        mm = (mm < 10) ? "0" + mm : mm;
+        ss = (ss < 10) ? "0" + ss : ss;
+
+        let time = hh + " : " + mm + " : " + ss + " " + session;
+
+
+        document.getElementById("time").innerHTML = time
+
+        let t = setTimeout(function () { currentTime() }, 1000);
+    }
+    currentTime();
+
+    function CurrentDate() {
+        date1 = new Date();
+        year = date1.getFullYear();
+        month = (date1.getMonth() < 10) ? "0" + (date1.getMonth() + 1) : (date1.getMonth() + 1);
+        date = date1.getDate();
+        link = `https://www.tamildailycalendar.com/${year}/${date}${month}${year}.jpg`
+        document.getElementById("center-image").src = link
+
+        date1 = new Date();
+        date2 = new Date("07/01/2023");
+        Difference_In_Time = date2.getTime() - date1.getTime();
+        Difference_In_Days = Math.abs(Math.round(Difference_In_Time / (1000 * 3600 * 24), 0)) + 1;
+        document.getElementById("count-down").innerHTML = `${Difference_In_Days} Days Remaining`
+
+        let tp = setTimeout(function () { CurrentDate() }, 3600 * 1000);
+
+    }
+
+    CurrentDate();
+
+</script>
+
+</html>
