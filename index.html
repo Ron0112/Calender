@@ -83,7 +83,7 @@
         date1 = new Date();
         date2 = new Date("07/01/2023");
         Difference_In_Time = date2.getTime() - date1.getTime();
-        Difference_In_Days = Math.abs(Math.round(Difference_In_Time / (1000 * 3600 * 24), 0)) + 1;
+        Difference_In_Days = Math.abs(Math.round(Difference_In_Time / (1000 * 3600 * 24), 0));
         document.getElementById("count-down").innerHTML = `${Difference_In_Days} Days Remaining`
 
         let tp = setTimeout(function () { CurrentDate() }, 3600 * 1000);
