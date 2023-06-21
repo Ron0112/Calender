@@ -31,7 +31,6 @@
         padding-top: 0;
         padding-bottom: 0;
     }
-
 </style>
 
 
@@ -83,9 +82,15 @@
         date1 = new Date();
         date2 = new Date("07/01/2023");
         Difference_In_Time = date2.getTime() - date1.getTime();
-        Difference_In_Days = Math.abs(Math.round(Difference_In_Time / (1000 * 3600 * 24), 0));
-        document.getElementById("count-down").innerHTML = `${Difference_In_Days} Days Remaining`
+        Difference_In_Days = Math.round(Difference_In_Time / (1000 * 3600 * 24), 0);
+        console.log(Difference_In_Days)
+        if (Difference_In_Days === 0) {
+            document.getElementById("count-down").innerHTML = `It's Ooty Time`
 
+        }
+        else {
+            document.getElementById("count-down").innerHTML = `${Difference_In_Days} Days Remaining`
+        }
         let tp = setTimeout(function () { CurrentDate() }, 3600 * 1000);
 
     }
