@@ -67,7 +67,7 @@
 
         document.getElementById("time").innerHTML = time
 
-        let t = setTimeout(function () { currentTime() }, 1000);
+        setTimeout(function () { currentTime() }, 1000);
     }
     currentTime();
 
@@ -78,6 +78,8 @@
         date = date1.getDate();
         link = `https://www.tamildailycalendar.com/${year}/${date}${month}${year}.jpg`
         document.getElementById("center-image").src = link
+
+        setTimeout(function () { CurrentDate() }, 1000 * 3600 * 6); 
     }
 
     CurrentDate();
